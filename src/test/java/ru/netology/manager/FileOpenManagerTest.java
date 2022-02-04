@@ -64,6 +64,18 @@ class FileOpenManagerTest {
 //    }
 
 
+//    @Test
+//    public void shouldDeleteProgram() {
+//        manager.deleteProgram(".doc");
+//        manager.deleteProgram(".ppt");
+//
+//        Set<String> expected = new TreeSet<>(Set.of(".jpg", ".pdf", ".rar"));
+//        Set<String> actual = manager.getAllExtensions();
+//
+//        assertIterableEquals(expected, actual);
+//    }
+
+
     @Test
     public void shouldDeleteProgram() {
         manager.deleteProgram(".doc");

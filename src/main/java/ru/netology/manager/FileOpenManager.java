@@ -51,8 +51,15 @@ public class FileOpenManager {
 //    }
 
 
+    // Второй неудачный вариант
+//    public Set<String> getAllExtensions() {
+//        TreeSet<String> listExtensions = new TreeSet<>(programsForFiles.keySet());
+//        return listExtensions;
+//    }
 
-     // Второй неудачный вариант
+
+
+     // Третий неудачный вариант
 //    public List<String> getAllExtensions() {
 //        Set<String> listExtensions = new HashSet<>(programsForFiles.keySet());
 //        return (List<String>) listExtensions.stream().sorted();
@@ -64,6 +71,7 @@ public class FileOpenManager {
     public Set<String> getAllExtensions() {
         return programsForFiles.keySet();
     }
+
 
 
 
