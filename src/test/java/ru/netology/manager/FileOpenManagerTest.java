@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,6 +18,7 @@ class FileOpenManagerTest {
         manager.addProgram(".doc", "Microsoft Office Word");
         manager.addProgram(".ppt", "Microsoft PowerPoint");
         manager.addProgram(".rar", "WinZip");
+        manager.addProgram(".zip", "WinZip");
     }
 
 
@@ -52,36 +52,12 @@ class FileOpenManagerTest {
     }
 
 
-//    @Test
-//    public void shouldDeleteProgram() {
-//        manager.deleteProgram(".doc");
-//        manager.deleteProgram(".ppt");
-//
-//        List<String> expected = new ArrayList<>((List.of(".jpg", ".pdf", ".rar")));
-//        List<String> actual = manager.getAllExtensions();
-//
-//        assertIterableEquals(expected, actual);
-//    }
-
-
-//    @Test
-//    public void shouldDeleteProgram() {
-//        manager.deleteProgram(".doc");
-//        manager.deleteProgram(".ppt");
-//
-//        Set<String> expected = new TreeSet<>(Set.of(".jpg", ".pdf", ".rar"));
-//        Set<String> actual = manager.getAllExtensions();
-//
-//        assertIterableEquals(expected, actual);
-//    }
-
-
     @Test
     public void shouldDeleteProgram() {
         manager.deleteProgram(".doc");
         manager.deleteProgram(".ppt");
 
-        Set<String> expected = new HashSet<>(Set.of(".jpg", ".pdf", ".rar"));
+        TreeSet<String> expected = new TreeSet<>(Set.of(".jpg", ".pdf", ".rar", ".zip"));
         Set<String> actual = manager.getAllExtensions();
 
         assertIterableEquals(expected, actual);
@@ -96,7 +72,7 @@ class FileOpenManagerTest {
 
     @Test
     public void shouldGetAllExtensions() {
-        Set<String> expected = new HashSet<>(Set.of(".doc", ".jpg", ".pdf", ".ppt", ".rar"));
+        TreeSet<String> expected = new TreeSet<>(Set.of(".doc", ".jpg", ".pdf", ".ppt", ".rar", ".zip"));
         Set<String> actual = manager.getAllExtensions();
         assertArrayEquals(expected.toArray(), actual.toArray());
     }
@@ -104,7 +80,7 @@ class FileOpenManagerTest {
 
     @Test
     public void shouldGetAllPrograms() {
-        Set<String> expected = new HashSet<>(Set.of
+        TreeSet<String> expected = new TreeSet<>(Set.of
                 ("Adobe Acrobat Reader", "Adobe Photoshop", "Microsoft Office Word", "Microsoft PowerPoint", "WinZip"));
         Set<String> actual = manager.getAllPrograms();
         assertArrayEquals(expected.toArray(), actual.toArray());

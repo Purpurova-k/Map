@@ -1,7 +1,6 @@
 package ru.netology.manager;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class FileOpenManager {
 
@@ -38,47 +37,17 @@ public class FileOpenManager {
 
 
     // Получить список всех зарегистрированных расширений, к которым привязаны приложения для открытия
-    // Неудачный вариант
-//    public HashSet<String> getAllExtensions() {
-//        HashSet<String> setExtensions = new HashSet<>(programsForFiles.keySet());
-//        List<String> sortedListExtensions = new ArrayList<>(setExtensions);
-//
-//        Collections.sort(sortedListExtensions);
-//
-//        HashSet<String> newSetExtensions = new HashSet<>(sortedListExtensions);
-//
-//        return newSetExtensions;
-//    }
-
-
-    // Второй неудачный вариант
-//    public Set<String> getAllExtensions() {
-//        TreeSet<String> listExtensions = new TreeSet<>(programsForFiles.keySet());
-//        return listExtensions;
-//    }
-
-
-
-     // Третий неудачный вариант
-//    public List<String> getAllExtensions() {
-//        Set<String> listExtensions = new HashSet<>(programsForFiles.keySet());
-//        return (List<String>) listExtensions.stream().sorted();
-//    }
-
-
-
-    // Удачный варинат, но без сортировки по алфавиту
+    // Сортирован по алфавиту
     public Set<String> getAllExtensions() {
-        return programsForFiles.keySet();
+        TreeSet<String> listExtensions = new TreeSet<>(programsForFiles.keySet());
+        return listExtensions;
     }
 
 
-
-
-
     // Получить список всех приложений, которые привязаны к каким-либо расширениям
-    // Возвращает уникальные значения (программы), но без сортировки по алфавиту
+    // Уникальные значения с сортировкой по алфавиту
     public Set<String> getAllPrograms() {
-       return new HashSet<>(programsForFiles.values());
+        TreeSet<String> listPrograms = new TreeSet<>(programsForFiles.values());
+        return listPrograms;
     }
 }
